@@ -7,6 +7,7 @@ import 'state/shoe_list_notifier.dart';
 import 'state/auth_notifier.dart';
 import 'state/cart_notifier.dart';
 import 'core/router.dart';
+import 'core/idle_timeout_wrapper.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -45,6 +46,11 @@ class ShoeStoreApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routerConfig: router,
+      builder: (context, child) {
+        return IdleTimeoutWrapper(
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
