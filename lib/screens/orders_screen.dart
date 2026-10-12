@@ -133,7 +133,6 @@ class OrdersScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text('Авторизуйтесь, чтобы отслеживать свои заказы', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.grey.shade600)),
                 const SizedBox(height: 32),
-                // ИСПРАВЛЕНО: context.push заменен на context.go для обновления URL
                 SizedBox(width: double.infinity, height: 50, child: FilledButton.icon(onPressed: () => context.go('/login'), icon: const Icon(Icons.login), label: const Text('Войти'))),
               ],
             ),

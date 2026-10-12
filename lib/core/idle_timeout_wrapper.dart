@@ -14,7 +14,7 @@ class IdleTimeoutWrapper extends StatefulWidget {
 
 class _IdleTimeoutWrapperState extends State<IdleTimeoutWrapper> {
   Timer? _timer;
-  // Время бездействия: 3 минуты
+
   static const Duration _idleTimeout = Duration(minutes: 3);
 
   @override
@@ -26,8 +26,7 @@ class _IdleTimeoutWrapperState extends State<IdleTimeoutWrapper> {
   void _resetTimer() {
     _timer?.cancel();
     final authNotifier = context.read<AuthNotifier>();
-    
-    // Запускаем таймер только если пользователь авторизован
+ 
     if (authNotifier.isAuthenticated) {
       _timer = Timer(_idleTimeout, () => _onIdleTimeout(authNotifier));
     }
@@ -36,10 +35,8 @@ class _IdleTimeoutWrapperState extends State<IdleTimeoutWrapper> {
   void _onIdleTimeout(AuthNotifier authNotifier) {
     if (!authNotifier.isAuthenticated) return;
 
-    // Выполняем выход из аккаунта
     authNotifier.logout();
     
-    // Перенаправляем на экран входа и показываем предупреждение
     if (mounted) {
       context.go('/login');
       ScaffoldMessenger.of(context).showSnackBar(

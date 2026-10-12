@@ -42,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didUpdateWidget(HomeScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Отслеживаем изменения в URL (например, при нажатии "Назад" в браузере)
     if (widget.search != oldWidget.search ||
         widget.brand != oldWidget.brand ||
         widget.sort != oldWidget.sort ||
